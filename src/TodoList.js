@@ -34,7 +34,6 @@ class TodoList {
 }
     setStatusComplete(id) {
         this.toDoArray[id-1].status = 'complete'
-        console.log(this.toDoArray[id-1])
         return this.toDoArray
     }
 
@@ -59,27 +58,22 @@ class TodoList {
     }
 
     search(id) {
-        const searchItems = []
         for (let i = 0; i < this.toDoArray.length; i++) {
-            if (this.toDoArray[i].id === (id)) {
-                searchItems.push(this.toDoArray[i])
+            if (this.toDoArray[i].id === id) {
+                return this.toDoArray[i];
             }
-            else return "Error ID does not exist"
         }
-        return searchItems
+        return "Error ID does not exist"// 
     }
 
     removeItem(id) {
-        const removedItems = []
         for (let i = 0; i < this.toDoArray.length; i++) {
-            if (this.toDoArray[i].id === (id)) {
-                removedItems.splice(this.toDoArray[i], 1)
+            if (this.toDoArray[i].id === id) {
+                this.toDoArray.splice([i], 1)
             }
         }
-        return removedItems
+        return this.toDoArray
     }
-
 }
-
 
 module.exports = TodoList
