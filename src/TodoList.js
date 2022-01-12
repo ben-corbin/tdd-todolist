@@ -22,7 +22,8 @@ class TodoList {
          const todo = {
                 id: this.toDoCounter,
                 text: note,
-                status: 'incomplete'
+                status: 'incomplete',
+                creation: Date().substring(0, 15)
             }
             this.toDoCounter++;
             this.toDoArray.push(todo);
@@ -73,7 +74,16 @@ class TodoList {
             }
         }
         return this.toDoArray
-    }
+ }
+ searchByDay(dayNameString){
+     const dayArray = []
+     for (let i = 0; i < this.toDoArray.length; i++) {
+         if (this.toDoArray[i].creation.includes(dayNameString))
+         dayArray.push(this.toDoArray[i])
+     }
+     return dayArray
+ }
 }
+
 
 module.exports = TodoList
